@@ -6,10 +6,10 @@ function Header(){
         <header className="header">
 
             <nav className="header__nav">
-                <NavLink className="header__list" to="">Write a message</NavLink>
-                <NavLink className="header__list" to="">Message board</NavLink>
-                <NavLink className="header__list" to="">Become a member</NavLink>
-                <NavLink className="header__list" to="">Settings</NavLink>
+                <NavLink className="header__button" to="">Write a message</NavLink>
+                <NavLink className="header__button" to="">Message board</NavLink>
+                <NavLink className="header__button" to="">Become a member</NavLink>
+                <NavLink className="header__button" to="">Settings</NavLink>
             </nav>
 
         </header>
