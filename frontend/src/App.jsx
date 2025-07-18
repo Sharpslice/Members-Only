@@ -1,11 +1,11 @@
+import { Outlet } from "react-router-dom"
 
 
 function App() {
-
-
   return (
     <>
-      {'hello world!'}
+    <h1>app</h1>
+     <Outlet/>
     </>
   )
 }
