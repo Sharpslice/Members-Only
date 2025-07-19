@@ -57,7 +57,7 @@ function LoginPage(){
 
             <div className='log-in__signup'>
                 <span>Don't have an account? </span>
-                <Link >Sign up</Link>
+                <Link to="sign-up" >Sign up</Link>
             </div>
             
         </div>
