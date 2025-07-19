@@ -1,6 +1,7 @@
 import { useState } from "react"
 import './SignupPage.css'
 import { Link } from "react-router-dom";
+import axios, { Axios } from "axios";
 function SignupPage(){
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
@@ -8,10 +9,30 @@ function SignupPage(){
     const [name,setName] = useState('');
     const [lastName,setLastName] = useState('');
 
+    const submitCredentials=()=>{
+        console.log({   username: username,
+                password: password,
+                name: name,
+                lastName: lastName
+            })
+        axios.post(`http://localhost:3000/auth/sign-up`,
+            {   username: username,
+                password: password,
+                name: name,
+                lastName: lastName
+            }
+
+
+        );
+    }
+
     const onHandleSubmit =(e)=>{
+        
         e.preventDefault()
-        alert(`name: ${name} last name: ${lastName}\n
-            username: ${username} password: ${password}`)
+        // alert(`name: ${name} last name: ${lastName}\n
+        //     username: ${username} password: ${password}`)
+        console.log('check')
+        submitCredentials();
     }
     return (
     <div className='sign-up_container'>

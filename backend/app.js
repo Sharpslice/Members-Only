@@ -15,15 +15,15 @@ const pool = new Pool({
 
 })
 
-
+const authRoute = require('./routes/auth')
 
 
 const app = express();
 app.use(cors())
+app.use(express.json())
 
-app.get('/',(req,res)=>{
-    res.send('<h1>Hello World<h1/>')
-})
+app.use('/auth',authRoute)
+
 
 
 app.listen(3000,()=>console.log("app listening on port 3000!"))
