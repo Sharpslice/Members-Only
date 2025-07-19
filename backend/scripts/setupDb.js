@@ -21,6 +21,7 @@ async function createTable(){
                 id SERIAL PRIMARY KEY,
                 username VARCHAR(255) UNIQUE NOT NULL,
                 name VARCHAR(255) NULL,
+                last_name VARCHAR(255) NULL,
                 password TEXT NOT NULL,
                 role VARCHAR(255) NOT NULL DEFAULT 'member' CHECK(role in ('member','admin'))
             );
