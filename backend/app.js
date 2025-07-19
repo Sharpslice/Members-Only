@@ -4,6 +4,7 @@ const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const cors = require('cors')
+const bcrypt = require('bcrypt')
 require('dotenv').config();
 const pool = new Pool({
     database: process.env.DB_NAME,
