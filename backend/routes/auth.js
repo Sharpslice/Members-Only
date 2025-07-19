@@ -13,6 +13,7 @@ auth.post('/sign-up',async(req,res)=>{
         `,[username,name,lastName,hashedPassword])
 
         res.status(200).send('good')
+        
     }
     catch(error){
         next(error)
