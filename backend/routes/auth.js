@@ -29,9 +29,8 @@ passport.use(new LocalStrategy(async function verify (username,password,done){
         const user = rows[0];
         if(!user) return done(null,false,{message:'incorrect username'});
         const hashedPassword = user.password;
-        if( !bcrypt.compare(password,hashedPassword)) return done(null,false, {message: 'incorrect password'});
+        if( ! await bcrypt.compare(password,hashedPassword)) return done(null,false, {message: 'incorrect password'});
 
-        console.log('credentials authenticateds')
         return done(null,user);
 
     }catch(err){
@@ -54,19 +53,26 @@ passport.deserializeUser(async(id,done)=>{
     }
 })
 
-auth.get('/check-auth',(req,res)=>{
-    if(req.isAuthenticated){
-        res.status(200).json({message:'user authenticated'})
+auth.get('/check-auth',(req,res,next)=>{
+    // console.log('session id' , req.sessionID)
+    try{
+        res.status(200).json({message:req.sessionID})
+    }catch(error){
+        next(error)
     }
-    else{
-        res.status(500).json({message: 'user is not authenticated'})
-    }
+    
 })
 
 auth.post('/log-in',passport.authenticate('local'),
     (req,res)=>{
+        
+        if(req.user){
+             res.status(200).json({message:'successful log-in ; user authenticated'})
+        }
+        else{
+            res.status(500).json({message:'not successful'})
+        }
        
-        res.status(200).json({message:'successful log-in'})
     }
 
 
