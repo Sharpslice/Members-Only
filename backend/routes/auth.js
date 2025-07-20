@@ -54,6 +54,15 @@ passport.deserializeUser(async(id,done)=>{
     }
 })
 
+auth.get('/check-auth',(req,res)=>{
+    if(req.isAuthenticated){
+        res.status(200).json({message:'user authenticated'})
+    }
+    else{
+        res.status(500).json({message: 'user is not authenticated'})
+    }
+})
+
 auth.post('/log-in',passport.authenticate('local'),
     (req,res)=>{
        
