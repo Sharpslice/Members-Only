@@ -15,6 +15,17 @@ const app = express();
 app.use(cors())
 app.use(express.json())
 
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+}))
+
+
+
+
+
+
 app.use('/auth',authRoute)
 
 app.use((error,req,res,next)=>{
