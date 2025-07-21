@@ -4,7 +4,9 @@
     justify-content: center;
 }
 .dropdown-button{
-     position: relative; 
+    position: relative; 
+    all:unset
+
 }
 .dropdown-list{
     top:7.5%;

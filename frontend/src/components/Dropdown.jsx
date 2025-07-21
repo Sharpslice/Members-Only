@@ -23,14 +23,14 @@ function Dropdown({title,items}){
     return(
         <>
         <div className='dropdown'>
-        <button 
-            className={'dropdown-button'}
-            onClick={onClick}
-        >
-            {title}
-        </button>
-        <ul className={`dropdown-list ${visibility?'':'hidden'}`}>
-            {renderItems()}
+            <button 
+                className={'dropdown-button'}
+                onClick={onClick}
+            >
+                {title}
+            </button>
+            <ul className={`dropdown-list ${visibility?'':'hidden'}`}>
+                {renderItems()}
         </ul>
         
 </div>

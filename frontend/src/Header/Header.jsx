@@ -27,7 +27,7 @@ function Header(){
                 {/* <NavLink className="header__button" to="settings">Settings</NavLink> */}
                 <Dropdown
                     className={"header__dropdown"}
-                    title="settings"
+                    title="Settings"
                     items={
                         [
                             {title:'account settings',path:'/',onFunctionCall:null},
