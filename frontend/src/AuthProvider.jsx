@@ -12,16 +12,12 @@ function AuthProvider({children}){
         const checkAuthentication=async()=>{
             try{
                 const response = await axios.get(`http://localhost:3000/auth/check-auth`,{withCredentials:true});
-                console.log('hey')
+                
                 
                     console.log(response.data.message)
                     setIsAuthenticated(true)
                     console.log('authenticating')
                 
-               
-                    
-                
-             
             }catch(error)
             {
                 if(error.response.status===401){

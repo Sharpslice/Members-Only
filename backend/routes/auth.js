@@ -58,9 +58,11 @@ auth.get('/check-auth',(req,res,next)=>{
    
     try{
         if(req.isAuthenticated()){
+            console.log('user authenticated')
             res.status(200).json({message:req.user.id})
         }
         else{
+            console.log('user denied')
             res.status(401).json({message:'failed to autheenticate'})
         }
         

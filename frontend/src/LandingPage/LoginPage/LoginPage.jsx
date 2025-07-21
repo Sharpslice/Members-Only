@@ -2,11 +2,15 @@ import { Link, useNavigate } from 'react-router-dom'
 import './LoginPage.css'
 import { useState } from 'react';
 import axios from 'axios';
+import { useContext } from 'react';
+import { AuthContext } from '../../AuthProvider';
+import { useEffect } from 'react';
 function LoginPage(){
     const [username,setUsername] = useState('')
     const [password,setPassword] = useState('')
 
     const navigate = useNavigate();
+    const {isAuthenticated,setIsAuthenticated} = useContext(AuthContext)
     const handleSubmit=async(e)=>
     {
         e.preventDefault();
@@ -17,12 +21,18 @@ function LoginPage(){
             },{withCredentials:true})
         if(response.data.success){
             console.log(response.data.message)
+            setIsAuthenticated(true)
             navigate('/')
         }
         else{
             console.log(response.data.message)
         }
     }
+    useEffect(()=>{
+        if(isAuthenticated === true){
+            navigate('/')
+        }
+    },[isAuthenticated])
 
     return(
         <div className="log-in__container">

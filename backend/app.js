@@ -28,11 +28,11 @@ app.use(session({
 
 app.use(passport.session());
 
-app.use((req,res,next)=>{
-    console.log(req.session);
-    console.log("user:",req.user);
-    next();
-})
+// app.use((req,res,next)=>{
+//     console.log(req.session);
+//     console.log("user:",req.user);
+//     next();
+// })
 
 
 app.use('/auth',authRoute)
