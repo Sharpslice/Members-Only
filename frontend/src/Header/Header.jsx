@@ -2,7 +2,21 @@ import { NavLink } from "react-router-dom"
 
 import './Header.css'
 import Dropdown from "../components/Dropdown"
+import axios from "axios"
+import { useContext } from "react"
+import { AuthContext } from "../AuthProvider"
+
+
+
+
 function Header(){
+
+    const {setIsAuthenticated} =useContext(AuthContext);
+
+    const logout = async()=>{
+        await axios.post(`http://localhost:3000/auth/log-out`,{},{withCredentials:true})
+        setIsAuthenticated(false);
+    }
     return(
         <header className="header">
 
@@ -17,7 +31,7 @@ function Header(){
                     items={
                         [
                             {title:'account settings',path:'/',onFunctionCall:null},
-                            {title:'log-out',path:'/login',onFunctionCall: console.log('hey')}
+                            {title:'log-out',path:'/login',onFunctionCall: logout}
                         ]
                     }
                     

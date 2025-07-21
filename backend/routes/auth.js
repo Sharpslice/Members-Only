@@ -85,7 +85,15 @@ auth.get('/check-auth',(req,res,next)=>{
 
 
 // )
-
+auth.post('/log-out',(req,res,next)=>{
+    req.logout(err =>{
+        if(err){
+            next(err)
+        }
+        console.log('logged out succesfully')
+        res.json({message: 'logged out successfully'})
+    })
+})
 auth.post('/log-in', (req, res, next) => {
   passport.authenticate('local', (err, user) => {
     if (user) {
