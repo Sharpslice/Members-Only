@@ -45,9 +45,9 @@ passport.serializeUser(function(user,done){
 
 passport.deserializeUser(async(id,done)=>{
     try{
-        const {rows} = await pool.query(`SELECT * from users WHERE id=$1 `,id);
+        const {rows} = await pool.query(`SELECT * from users WHERE id=$1 `,[id]);
         const user = rows[0];
-        console.log(user)
+        
         done(null,user)
     }catch(error){
         done(error)
@@ -55,7 +55,7 @@ passport.deserializeUser(async(id,done)=>{
 })
 
 auth.get('/check-auth',(req,res,next)=>{
-    console.log(req.user)
+   
     try{
         if(req.user){
             res.status(200).json({message:req.sessionID})
@@ -70,20 +70,32 @@ auth.get('/check-auth',(req,res,next)=>{
     
 })
 
-auth.post('/log-in',passport.authenticate('local'),
-    (req,res)=>{
+// auth.post('/log-in',passport.authenticate('local'),
+//     (req,res)=>{
         
-        if(req.user){
-             res.json({success:true,message:'successful log-in ; user authenticated'})
-        }
-        else{
-            res.json({success:false,message:'not successful'})
-        }
+//         // req.logIn(req.user, () => {
+//         //     console.log(req.user);
+//         //     res.json({ success: true, message: 'successful log-in; user authenticated' });
+//         // });
+//         res.json({ success: true, message: 'successful log-in; user authenticated' });
        
+//     }
+
+
+// )
+
+auth.post('/log-in', (req, res, next) => {
+  passport.authenticate('local', (err, user) => {
+    if (user) {
+      req.logIn(user, () => {
+        console.log(req.user);
+        res.json({ success: true, message: 'successful log-in; user authenticated' });
+      });
+    } else {
+      res.json({ success: false, message: 'not successful' });
     }
-
-
-)
+  })(req, res, next);
+});
 
 
 
