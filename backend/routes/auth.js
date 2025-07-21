@@ -47,6 +47,7 @@ passport.deserializeUser(async(id,done)=>{
     try{
         const {rows} = await pool.query(`SELECT * from users WHERE id=$1 `,id);
         const user = rows[0];
+        console.log(user)
         done(null,user)
     }catch(error){
         done(error)
@@ -54,9 +55,15 @@ passport.deserializeUser(async(id,done)=>{
 })
 
 auth.get('/check-auth',(req,res,next)=>{
-    // console.log('session id' , req.sessionID)
+    console.log(req.user)
     try{
-        res.status(200).json({message:req.sessionID})
+        if(req.user){
+            res.status(200).json({message:req.sessionID})
+        }
+        else{
+            res.status(200).json({message:'failed to autheenticate'})
+        }
+        
     }catch(error){
         next(error)
     }
@@ -67,10 +74,10 @@ auth.post('/log-in',passport.authenticate('local'),
     (req,res)=>{
         
         if(req.user){
-             res.status(200).json({message:'successful log-in ; user authenticated'})
+             res.json({success:true,message:'successful log-in ; user authenticated'})
         }
         else{
-            res.status(500).json({message:'not successful'})
+            res.json({success:false,message:'not successful'})
         }
        
     }
