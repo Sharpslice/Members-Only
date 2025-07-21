@@ -1,0 +1,21 @@
+.dropdown{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.dropdown-button{
+     position: relative; 
+}
+.dropdown-list{
+    top:7.5%;
+    position: absolute;
+    z-index: 2; 
+    background-color: white;
+}
+.dropdown-item{
+    list-style: none;
+}
+
+.hidden{
+    display: none;
+}

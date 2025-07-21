@@ -14,7 +14,13 @@ function Header(){
                 <Dropdown
                     className={"header__dropdown"}
                     title="settings"
-                    items={['log-out']}
+                    items={
+                        [
+                            {title:'account settings',path:'/',onFunctionCall:null},
+                            {title:'log-out',path:'/login',onFunctionCall: console.log('hey')}
+                        ]
+                    }
+                    
                 />
             </nav>
 
