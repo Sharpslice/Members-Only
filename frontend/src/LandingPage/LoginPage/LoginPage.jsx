@@ -1,15 +1,27 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './LoginPage.css'
 import { useState } from 'react';
+import axios from 'axios';
 function LoginPage(){
     const [username,setUsername] = useState('')
     const [password,setPassword] = useState('')
 
-
-    const handleSubmit=(e)=>
+    const navigate = useNavigate();
+    const handleSubmit=async(e)=>
     {
         e.preventDefault();
-        alert(`username: ${username} password: ${password}`)
+        const response = await axios.post(`http://localhost:3000/auth/log-in`,{
+            username:username,
+            password:password,
+            
+            },{withCredentials:true})
+        if(response.data.success){
+            console.log(response.data.message)
+            navigate('/')
+        }
+        else{
+            console.log(response.data.message)
+        }
     }
 
     return(

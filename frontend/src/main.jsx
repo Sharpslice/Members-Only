@@ -9,19 +9,20 @@ import WriteMessagePage from './Nav/WriteMessagePage/WriteMessagePage.jsx'
 import SettingsPage from './Nav/SettingsPage/SettingsPage.jsx'
 import LandingPage from './LandingPage/LandingPage.jsx'
 import SignupPage from './LandingPage/SignupPage/SignupPage.jsx'
+import { AuthProvider } from './AuthProvider.jsx'
 
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/login",
     element: <LandingPage/>,
       children:[
         {index:true,element: <LoginPage/>},
-        {path:'/sign-up',element: <SignupPage/>}
+        {path:'sign-up',element: <SignupPage/>}
       ]
   },
   {
-    path: "/login",
+    path: "/",
     element: <App/>,
       children:[
           {index: true, element:<HomePage/>},
@@ -39,6 +40,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <AuthProvider>
     <RouterProvider router={router}/>
+    </AuthProvider>
   </StrictMode>,
 )
