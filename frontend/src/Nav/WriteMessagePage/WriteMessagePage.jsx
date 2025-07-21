@@ -1,13 +1,18 @@
 import { useState } from 'react'
 import './WriteMessagePage.css'
+import axios from 'axios'
 
 function WriteMessagePage(){
     const [title,setTitle] = useState("")
     const [textfield, setTextfield] = useState("")
 
-    const onPostSubmit =(e)=>{
+    const onPostSubmit =async(e)=>{
         e.preventDefault();
-        console.log("hey")
+        await axios.post(`http://localhost:3000/post/create`,
+            {title:title,message:textfield},
+            {withCredentials:true}
+
+        )
     }
     return(
         <div className="write-container">

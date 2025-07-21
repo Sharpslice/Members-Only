@@ -8,6 +8,7 @@ require('dotenv').config();
 
 
 const authRoute = require('./routes/auth');
+const postRoute = require('./routes/post')
 const passport = require('passport');
 
 
@@ -35,7 +36,9 @@ app.use(passport.session());
 // })
 
 
-app.use('/auth',authRoute)
+app.use('/auth',authRoute);
+app.use('/post',postRoute)
+
 
 app.use((error,req,res,next)=>{
     console.error(error.message)
