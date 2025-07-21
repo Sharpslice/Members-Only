@@ -47,7 +47,7 @@ passport.deserializeUser(async(id,done)=>{
     try{
         const {rows} = await pool.query(`SELECT * from users WHERE id=$1 `,[id]);
         const user = rows[0];
-        
+      
         done(null,user)
     }catch(error){
         done(error)
@@ -57,11 +57,11 @@ passport.deserializeUser(async(id,done)=>{
 auth.get('/check-auth',(req,res,next)=>{
    
     try{
-        if(req.user){
-            res.status(200).json({message:req.sessionID})
+        if(req.isAuthenticated()){
+            res.status(200).json({message:req.user.id})
         }
         else{
-            res.status(200).json({message:'failed to autheenticate'})
+            res.status(401).json({message:'failed to autheenticate'})
         }
         
     }catch(error){
