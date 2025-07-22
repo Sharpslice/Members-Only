@@ -32,13 +32,19 @@ function LoginPage(){
         if(isAuthenticated === true){
             navigate('/')
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[isAuthenticated])
 
     return(
         <div className="log-in__container">
 
             <div className='log-in__banner'>
-                LOG IN
+                <img 
+                    src="/public/assets/dedseclogo.png" 
+                    alt="" 
+                    style={{width:"200px", height:"auto",objectFit:'cover'}}
+                    
+                    />
             </div>
 
             <form className="log-in__form" action="" method="post">

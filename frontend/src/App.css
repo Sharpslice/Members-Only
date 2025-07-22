@@ -17,6 +17,8 @@
     
 }
 body{
+     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url(/public/assets/watch-dog-background.jpg);
     background-color: #121212;
     font-family: 'WATCHDOGS','Times New Roman', Times, serif !important;
   

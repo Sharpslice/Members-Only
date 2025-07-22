@@ -1,5 +1,6 @@
 
 .log-in__container{
+    background-color: black;
     border: 4px solid var(--border-color);
     border-radius: var(--radius);
     width: 27rem;
@@ -8,9 +9,10 @@
 }
 
 .log-in__banner{
-    text-align: center;
-    padding: 2rem;
-    font-size: 24pt;
+    display: flex;
+    justify-content: center;
+    
+   
 }
 
 .log-in__form{
