@@ -58,9 +58,11 @@ auth.get('/check-auth',(req,res,next)=>{
    
     try{
         if(req.isAuthenticated()){
+            console.log('user authenticated')
             res.status(200).json({message:req.user.id})
         }
         else{
+            console.log('user denied')
             res.status(401).json({message:'failed to autheenticate'})
         }
         
@@ -83,7 +85,15 @@ auth.get('/check-auth',(req,res,next)=>{
 
 
 // )
-
+auth.post('/log-out',(req,res,next)=>{
+    req.logout(err =>{
+        if(err){
+            next(err)
+        }
+        console.log('logged out succesfully')
+        res.json({message: 'logged out successfully'})
+    })
+})
 auth.post('/log-in', (req, res, next) => {
   passport.authenticate('local', (err, user) => {
     if (user) {

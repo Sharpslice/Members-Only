@@ -9,11 +9,13 @@ function App() {
   const {isAuthenticated} = useContext(AuthContext);
   const navigate = useNavigate()
   useEffect(()=>{
-      if(!isAuthenticated){
+      if(isAuthenticated === false){
+        console.log(isAuthenticated)
         navigate('/login')
-    } 
-  })
-  if(!isAuthenticated) return null;
+      } 
+    
+  },[isAuthenticated])
+  if(isAuthenticated===null) return null;
   return (
     <>
       <Header/>

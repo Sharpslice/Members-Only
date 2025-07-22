@@ -7,24 +7,27 @@ import { createContext} from 'react';
 
 const AuthContext = createContext()
 function AuthProvider({children}){
-    const [isAuthenticated,setIsAuthenticated] = useState(false)
+    const [isAuthenticated,setIsAuthenticated] = useState(null)
     useEffect(()=>{
         const checkAuthentication=async()=>{
             try{
                 const response = await axios.get(`http://localhost:3000/auth/check-auth`,{withCredentials:true});
-                if(response.status === 200){
+                
+                
                     console.log(response.data.message)
                     setIsAuthenticated(true)
                     console.log('authenticating')
-                }
-                else{
-                    setIsAuthenticated(false)
-                    console.log(response.data.message)
-                }
-             
+                
             }catch(error)
             {
-                console.error('authentication fetch failed',error.message)
+                if(error.response.status===401){
+                    setIsAuthenticated(false)
+                    console.log(error.response.data.message)
+                }
+                else{
+                    console.error('authentication fetch failed',error.message)
+                }
+                
             }
             
         }
