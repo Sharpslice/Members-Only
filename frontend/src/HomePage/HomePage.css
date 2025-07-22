@@ -1,4 +1,5 @@
 .message-board{
+    padding-top: 0.5rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
