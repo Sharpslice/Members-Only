@@ -11,6 +11,8 @@ function LoginPage(){
 
     const navigate = useNavigate();
     const {isAuthenticated,setIsAuthenticated} = useContext(AuthContext)
+    const [loading,setLoading] = useState(false);
+    
     const handleSubmit=async(e)=>
     {
         e.preventDefault();
@@ -21,8 +23,14 @@ function LoginPage(){
             },{withCredentials:true})
         if(response.data.success){
             console.log(response.data.message)
-            setIsAuthenticated(true)
-            navigate('/')
+            setLoading(true)
+            setTimeout(()=>{
+
+                setIsAuthenticated(true)
+                navigate('/')
+
+            },2600)
+            
         }
         else{
             console.log(response.data.message)
@@ -35,6 +43,14 @@ function LoginPage(){
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[isAuthenticated])
 
+    if(loading === true) return (
+        <img 
+            src='/public/assets/dedsec-animation.gif'
+            style={{width:'30%',height:"auto"}}
+        />
+            
+        
+    )
     return(
         <div className="log-in__container">
 
