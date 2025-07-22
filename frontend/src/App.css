@@ -3,8 +3,24 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+@font-face {
+    font-family: 'WATCHDOGS';
+    src: url(/public/fonts/PexicoMicro-Regular.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 :root{
     --radius:8px;
+    --font-color:white;
+    --border-color:grey;
+    
+}
+body{
+    background-color: #121212;
+    font-family: 'WATCHDOGS','Times New Roman', Times, serif !important;
+  
+    color: var(--font-color);
 }
 #root{
     width: 100vw;
