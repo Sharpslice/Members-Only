@@ -19,48 +19,40 @@ function Posts({title,body,created_at,user_id}){
         
     }
 
-    
     const [mouseClick,setMouseClick] = useState(false);
 
-    const [modalX,setModalX] = useState()
-    const [modalY,setModalY] = useState()
-    const[x,setX]=useState(null)
-    const[y,setY]= useState(null)
+    
+   const [x,setX] = useState(500);
+   const [y,setY] = useState(100)
 
-  
+   const [modalX,setModalX] = useState(0)
+   const [modalY,setModalY] = useState(0)
 
-   
-
+   const modalOffset = useRef({x:0,y:0});
     const onMouseDown=(e)=>{
-        
         setMouseClick(true)
-      
-        const rect = dialogRef.current.getBoundingClientRect()
+        const rect = dialogRef.current.getBoundingClientRect();
+        // setModalX(rect.left)
+        // setModalY(rect.top)
+        modalOffset.current.x = e.clientX- rect.left;
+        modalOffset.current.y = e.clientY- rect.top;
+        console.log(rect.left,rect.top)
         
-        setModalX(rect.left)
-        setModalY(rect.top)
-      
     }
     const onMouseUp=(e)=>{
        
         setMouseClick(false)
-        console.log('lifting up')
+        console.log(x,y)
+        
+        
         
     }
     const onMouseMove=(e)=>{
         if(!mouseClick) return;
         
-        const currentX = (e.clientX - modalX)
-        const currentY = (e.clientY - modalY)
-        const thisx = currentX
-        const thisy = currentY
         
-        setX(thisx);
-        setY(thisy);
-        
-        
- 
-        
+         setX(e.clientX - modalOffset.current.x)
+         setY(e.clientY -modalOffset.current.y);
         
     }
 
@@ -80,16 +72,40 @@ function Posts({title,body,created_at,user_id}){
                 </div>
 
             </div>
-            <dialog 
-                ref={dialogRef}
-                onMouseDown={onMouseDown}
-                onMouseUp={onMouseUp}
-                onMouseMove={onMouseMove}
-                onMouseLeave={()=>{setMouseClick(false)}}
-                style={{width:'5rem',height:'2rem',transform: `translate(${x}px,${y}px)`}}
-            >
-                <p>{user_id}</p>
-            </dialog>
+
+            <div>
+
+           
+                <dialog 
+                    ref={dialogRef}
+                    
+                    style={{
+                        width:'5rem',
+                        height:'2rem',
+                        //  transform: `translate(${x}px,${y}px)`,
+                         top:y,
+                         left:x,
+                        position:"absolute"
+                        
+                       
+
+                    }}
+                >
+                    <div
+                        onMouseDown={onMouseDown}
+                        onMouseUp={onMouseUp}
+                        onMouseMove={onMouseMove}
+                        onMouseLeave={()=>{setMouseClick(false)}}
+                        style={{ userSelect:'none'}}
+                    >
+                        hello
+                        
+                    </div>
+                    <div style={{backgroundColor:"rgba(0,0,0,0.5)",color:"white"}}>{user_id}</div>
+                </dialog>
+                
+                
+             </div>
         </>
     )
 }
