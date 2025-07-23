@@ -5,6 +5,7 @@
     width: 27rem;
     height: 32rem;
     padding: 2rem;
+    background-color: black;
 }
 
 
@@ -53,5 +54,6 @@
 }
 
 .sign-up-container__redirect a{
+    color: green;
     text-decoration: none;
 }

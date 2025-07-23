@@ -1,9 +1,26 @@
+.write-container{
+    margin-top: 10px;
+    width: 30rem;
+   
+}
+
 .post-form{
     display: flex;
     flex-direction: column;
     gap:0.5rem
 }
-
+.post-form__input{
+    all:unset;
+    border: 2px solid grey;
+    padding: 0.5rem;
+    background-color: rgba(0,0,0,0.7);
+    
+}
 .post-form__textfield{
+    all:unset;
+    border: 2px solid grey;
+    padding: 0.5rem;
+    background-color: rgba(0,0,0,0.7);
+    height: 10rem;
     resize: vertical;
 }

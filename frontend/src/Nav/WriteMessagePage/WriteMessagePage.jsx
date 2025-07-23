@@ -13,12 +13,15 @@ function WriteMessagePage(){
             {withCredentials:true}
 
         )
+
+        setTitle('');
+        setTextfield('');
     }
     return(
         <div className="write-container">
             <form className="post-form">
                 <input
-                    className="post-form__input:title"
+                    className="post-form__input"
                     type="text"
                     placeholder="title"
                     value = {title}

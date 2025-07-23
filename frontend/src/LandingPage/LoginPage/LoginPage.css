@@ -42,7 +42,7 @@
 }
 .form-options__link{
     text-decoration: none;
-    
+    color: green;
 }
 
 .log-in__button{
@@ -53,8 +53,10 @@
 .log-in__signup{
     margin-top: 1rem;
     text-align: center;
+    
 }
 
 .log-in__signup a{
+    color: green;
     text-decoration: none;
 }

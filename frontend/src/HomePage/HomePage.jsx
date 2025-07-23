@@ -21,9 +21,11 @@ function HomePage(){
                 {messages.map((message)=>{
                     return(
                         <Posts
+                            key={message.id}
                             title={message.title}
                             body= {message.messages}
                             created_at={message.created_at}
+                            user_id = {message.user_id}
                         />
                     )
                         
