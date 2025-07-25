@@ -59,7 +59,7 @@ auth.get('/check-auth',(req,res,next)=>{
     try{
         if(req.isAuthenticated()){
             console.log('user authenticated')
-            res.status(200).json({message:req.user.id})
+            res.status(200).json({user:req.user,message:req.user.id})
         }
         else{
             console.log('user denied')
@@ -72,19 +72,6 @@ auth.get('/check-auth',(req,res,next)=>{
     
 })
 
-// auth.post('/log-in',passport.authenticate('local'),
-//     (req,res)=>{
-        
-//         // req.logIn(req.user, () => {
-//         //     console.log(req.user);
-//         //     res.json({ success: true, message: 'successful log-in; user authenticated' });
-//         // });
-//         res.json({ success: true, message: 'successful log-in; user authenticated' });
-       
-//     }
-
-
-// )
 auth.post('/log-out',(req,res,next)=>{
     req.logout(err =>{
         if(err){

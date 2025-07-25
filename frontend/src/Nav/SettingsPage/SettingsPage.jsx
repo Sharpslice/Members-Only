@@ -1,12 +1,17 @@
 import { useState } from 'react'
 import './SettingsPage.css'
 import FormInput from '../../components/FormInput';
+import { useContext } from 'react';
+import { AuthContext } from '../../AuthProvider';
 function SettingsPage(){
+    const {user} =useContext(AuthContext);
     const [name,setName] = useState(null);
     const [lastName,setLastName] = useState(null);
     const [age,setAge] = useState(null);
     const [bio,setBio] = useState(null);
 
+
+    
     return(
         <div className="settings__container">
             <form className='settings__form'>
