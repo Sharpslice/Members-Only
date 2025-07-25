@@ -45,7 +45,7 @@ function LoginPage(){
 
     if(loading === true) return (
         <img 
-            src='/public/assets/dedsec-animation.gif'
+            src='/assets/dedsec-animation.gif'
             style={{width:'30%',height:"auto"}}
         />
             
@@ -56,7 +56,7 @@ function LoginPage(){
 
             <div className='log-in__banner'>
                 <img 
-                    src="/public/assets/dedseclogo.png" 
+                    src="/assets/dedseclogo.png" 
                     alt="" 
                     style={{width:"200px", height:"auto",objectFit:'cover'}}
                     
