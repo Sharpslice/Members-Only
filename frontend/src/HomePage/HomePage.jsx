@@ -11,9 +11,10 @@ function HomePage(){
         const fetchMessages=async()=>{
             const response = await axios.get(`http://localhost:3000/post/all`);
             setMessages(response.data.listOfMessages);
+            console.log('hello')
         }
         fetchMessages();
-    })
+    },[])
 
     return(
         <div className="homepage">
@@ -27,10 +28,7 @@ function HomePage(){
                             created_at={message.created_at}
                             user_id = {message.user_id}
                         />
-                    )
-                        
-
-                    
+                    ) 
                 })}
             </div>
         </div>

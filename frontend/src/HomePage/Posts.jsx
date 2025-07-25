@@ -10,14 +10,14 @@ function Posts({title,body,created_at,user_id}){
 
     const [user,setUser] = useState(null);
     
-    useEffect(()=>{
-        const fetchUser=async()=>{
-            const response = await axios.get(`http://localhost:3000/user/${user_id}`)
-            console.log(response.data.user)
-            setUser(response.data.user)
-        }
-        fetchUser();
-    },[])
+    // useEffect(()=>{
+    //     const fetchUser=async()=>{
+    //         const response = await axios.get(`http://localhost:3000/user/${user_id}`)
+    //         console.log(response.data.user)
+    //         setUser(response.data.user)
+    //     }
+    //     fetchUser();
+    // },[])
    
     const onHandleClick=async()=>{
         
@@ -50,7 +50,7 @@ function Posts({title,body,created_at,user_id}){
        
         
     }
-    const onMouseUp=(e)=>{
+    const onMouseUp=()=>{
        
         setMouseClick(false)
         console.log(x,y)
@@ -87,7 +87,7 @@ function Posts({title,body,created_at,user_id}){
     
 
            
-            <dialog className='modal' ref={dialogRef}  style={{top:y,left:x,position:"absolute"}}>
+            {/* <dialog className='modal' ref={dialogRef}  style={{top:y,left:x,position:"absolute"}}>
                 <div className='select-bar'
                     onMouseDown={onMouseDown}
                     onMouseUp={onMouseUp}
@@ -121,7 +121,7 @@ function Posts({title,body,created_at,user_id}){
                 </div>}
 
 
-            </dialog>
+            </dialog> */}
                 
                 
           
