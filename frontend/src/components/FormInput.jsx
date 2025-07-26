@@ -3,7 +3,7 @@ import './FormInput.css'
 function FormInput({title,inputName,value,setValue}){
     return(
         <>
-             <div className='log-in__form-group'>
+             <div className='form-group'>
                     <label htmlFor={inputName}>{title}</label>
                     <input 
                         type="text" 

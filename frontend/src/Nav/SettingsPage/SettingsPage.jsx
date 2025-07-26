@@ -3,13 +3,15 @@ import './SettingsPage.css'
 import FormInput from '../../components/FormInput';
 import { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider';
+import { useEffect } from 'react';
 function SettingsPage(){
-    const {user} =useContext(AuthContext);
-    const [name,setName] = useState(null);
-    const [lastName,setLastName] = useState(null);
+    const {authUser} =useContext(AuthContext);
+    const [name,setName] = useState(authUser.name);
+    const [lastName,setLastName] = useState(authUser.last_name);
     const [age,setAge] = useState(null);
     const [bio,setBio] = useState(null);
 
+ 
 
     
     return(
@@ -39,7 +41,7 @@ function SettingsPage(){
                     value ={bio}
                     setValue={setBio}
                 />
-                
+                <button className='settings__button'>Save Changes</button>
                 
             </form>
 

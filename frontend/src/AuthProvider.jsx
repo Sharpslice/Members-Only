@@ -16,6 +16,7 @@ function AuthProvider({children}){
                 
                     console.log(response.data.message)
                     setIsAuthenticated(true)
+                    console.log(response.data.user)
                     setAuthUser(response.data.user)
                     console.log('authenticating')
                 

@@ -1,0 +1,14 @@
+.form-group{
+    display: flex;
+    flex-direction: column;
+    
+   
+}
+
+.form-group input{
+    padding: 0.5rem;
+    color: white;
+    border: 3px solid grey;
+    background-color: var(--background-transparency);
+    font-family: 'WATCHDOGS','Times New Roman', Times, serif !important;
+}
