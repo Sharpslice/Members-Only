@@ -30,7 +30,7 @@ function Header(){
                     title="Settings"
                     items={
                         [
-                            {title:'account settings',path:'/',onFunctionCall:null},
+                            {title:'account settings',path:'/settings',onFunctionCall:null},
                             {title:'log-out',path:'/login',onFunctionCall: logout}
                         ]
                     }

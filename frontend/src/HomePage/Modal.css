@@ -1,0 +1,37 @@
+.modal{
+    background-color: transparent;
+    border: none;
+}
+.modal__profile{
+    display: flex;
+    flex-direction: column;
+}
+.modal__profile-name{
+    background-color: #1E97c7;
+}
+.select-bar{
+    min-width: 16rem;
+    min-height: 1rem;
+    width: 14rem;
+    height: 1rem;
+
+    
+
+    user-select: none;
+    background-color: grey;
+
+    display: flex;
+    justify-content: right;
+}
+.select-bar__button{
+    all:unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    aspect-ratio: 1/1;
+    color: white;
+}
+.select-bar__button:hover{
+    background-color: rgba(0,0,0,0.5);
+}

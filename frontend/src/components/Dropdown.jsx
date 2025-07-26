@@ -14,11 +14,16 @@ function Dropdown({title,items}){
                     key={`${item.title}-${index}`}
                     className={`dropdown-item`}
                 >
-                    <Link onClick={()=>item.onFunctionCall()} to={item.path}>{item.title}</Link>
-                </li>
-            )
-        })
-    }
+                    <Link onClick={() => {
+                                    if (item.onFunctionCall) {
+                                    item.onFunctionCall();
+                                    }
+                                    }}
+                            to={item.path}>{item.title}</Link>
+                                            </li>
+                                        )
+                                    })
+                                }
 
     return(
         <>

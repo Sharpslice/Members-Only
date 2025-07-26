@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: 'WATCHDOGS';
-    src: url(/public/fonts/PexicoMicro-Regular.ttf) format('truetype');
+    src: url(fonts/PexicoMicro-Regular.ttf) format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -14,11 +14,12 @@
     --radius:8px;
     --font-color:white;
     --border-color:grey;
+    --background-transparency: rgba(0,0,0,0.7)
     
 }
 body{
      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                url(/public/assets/watch-dog-background.jpg);
+                url(assets/watch-dog-background.jpg);
     background-color: #121212;
     font-family: 'WATCHDOGS','Times New Roman', Times, serif !important;
   
